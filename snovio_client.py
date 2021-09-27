@@ -63,6 +63,8 @@ class SnovioClient:
     ) -> DomainResponse:
         params = locals()
         params["access_token"] = self.token
+        params["positions[]"] = params["positions"]
+        del params["positions"]
         resp = requests.get(
             "https://api.snov.io/v2/domain-emails-with-info", params=params
         )
